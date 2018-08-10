@@ -81,6 +81,18 @@ public class HomeController {
         departmentRepository.save(department);
         return "redirect:/add";
     }
+    @PostMapping("/search")
+    public String searchByName(@RequestParam("search") String search, @RequestParam("search2") String search2,@RequestParam long departmentId, Model model){
+        model.addAttribute("employees", employeeRepository.findByFirstNameOrLastNameOrDepartment_id(search, search2, departmentId));
+
+        return "list";
+    }
+//    @PostMapping("/search2")
+//    public String searchByDepartment(@ModelAttribute Department department, @RequestParam long departmentId, Model model){
+//        model.addAttribute("departments", departmentRepository.findAll());
+//        model.addAttribute("departments", departmentRepository.findById(departmentId));
+//        return "list";
+//    }
 }
 
 

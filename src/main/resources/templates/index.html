@@ -5,6 +5,7 @@
     <title>Sterling Solutions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/footer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
@@ -103,9 +104,40 @@
 </div>
 </div>
 <div th:fragment="footer">
-    <footer class="container-fluid">
-        <div class="item">
-            <img src="http://res.cloudinary.com/drelias15/image/upload/c_scale,h_346,q_100,w_1920/v1533840632/Courses/rotator_transfer-slide_1920x700.jpg" alt="New York">
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/add">Add Employee</a></li>
+                        <li><a href="/list">Go to Employees List</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About us</h5>
+                    <p> Lorem ipsum dolor amet, consectetur adipiscing elit. Etiam consectetur aliquet aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support</h5>
+                    <p> Lorem ipsum dolor amet, consectetur adipiscing elit. Etiam consectetur aliquet aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+                </div>
+                <div class="col-sm-3 info">
+                    <h5>Information</h5>
+                    <p> Lorem ipsum dolor amet, consectetur adipiscing elit. Etiam consectetur aliquet aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+                </div>
+            </div>
+        </div>
+        <div class="second-bar">
+            <div class="container">
+                <h2 class="logo"><a href="#"> Sterling Solutions </a></h2>
+                <div class="social-icons">
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-google-plus"></i>
+                </div>
+            </div>
         </div>
     </footer>
 </div>

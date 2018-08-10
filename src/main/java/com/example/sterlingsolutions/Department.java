@@ -17,7 +17,7 @@ public class Department {
     private String department;
 
     @OneToMany
-    @JoinColumn(name = "departmentid")
+    @JoinColumn(name = "department_id")
     public Set<Employee> employees;
 
     public long getId() {

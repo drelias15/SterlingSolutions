@@ -93,9 +93,14 @@ public class HomeController {
         return "redirect:/add";
     }
     @PostMapping("/search")
-    public String searchByName(@RequestParam("search") String search, @RequestParam("search2") String search2,@RequestParam long departmentId, Model model){
-        model.addAttribute("employees", employeeRepository.findByFirstNameOrLastNameOrDepartment_id(search, search2, departmentId));
+    public String searchByName(@RequestParam("search") String search, @RequestParam("search2") String search2, Model model){
+        model.addAttribute("employees", employeeRepository.findByFirstNameOrLastName(search, search2));
+        return "list";
+    }
 
+    @PostMapping("/search2")
+    public String searchByDepartment(@RequestParam long departmentId, Model model){
+        model.addAttribute("employees", employeeRepository.findByDepartment_id(departmentId));
         return "list";
     }
 }

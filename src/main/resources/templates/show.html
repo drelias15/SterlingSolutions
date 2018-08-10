@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sterling Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {height: 1000px}
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: white;
+            color: white;
+            padding: 10px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {height: auto;}
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <h1>Welcome to the Employees Portal</h1>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/add">Add Employee</a></li>
+                <li><a href="/list">See the list of Employees</a></li>
+            </ul><br>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Courses..">
+                <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <hr>
+            <div class="jumbotron">
+                <h1>Employee Detail.</h1>
+                <p><a class="btn btn-primary btn-lg" href="/list" role="button">See All Employees. </a></p>
+                <p>
+                    First Name: <span th:text="${employee.firstName}"></span><br/> </p>
+                <p>Last Name:<span th:text="${employee.lastName}"></span><br/>
+                </p>
+                <p>Email:<span th:text="${employee.email}"></span><br/>
+                </p>
+                <p>Phone:<span th:text="${employee.phone}"></span><br/>
+                </p>
+                <p>Department:<span th:text="${employee.department.department}"></span><br/>
+                </p>
+
+
+            </div>
+            <a type="button" class="btn btn-danger" href="@{/delete/{id}(id=${employee.id})}" role="button"> Remove this Employee</a>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

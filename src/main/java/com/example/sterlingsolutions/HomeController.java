@@ -1,5 +1,6 @@
 package com.example.sterlingsolutions;
 
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +20,8 @@ public class HomeController {
     @Autowired
     DepartmentRepository departmentRepository;
 
-//    @Autowired
-//    CloudinaryConfig cloudc;
+    @Autowired
+    CloudinaryConfig cloudc;
 
     @RequestMapping("/")
     public String homePage(){
@@ -39,11 +40,21 @@ public class HomeController {
         return "employeeform";
     }
     @PostMapping("/process")
-    public String processForm(@ModelAttribute @Valid Employee employee, @RequestParam long departmentId, BindingResult result)
+    public String processForm(@ModelAttribute @Valid Employee employee, @RequestParam long departmentId, BindingResult result, @RequestParam("file")MultipartFile file)
     {
         if (result.hasErrors()){
             return "employeeform";
-        }
+        }else if(file.isEmpty()){
+        return "redirect:/add";
+    }try {
+        Map uploadResult = cloudc.upload(file.getBytes(),
+                ObjectUtils.asMap("resourcetype", "auto"));
+        employee.setHeadShot(uploadResult.get("url").toString());
+        employeeRepository.save(employee);
+    }catch (IOException e){
+        e.printStackTrace();
+        return "redirect:/add";
+    }
         Department dep = departmentRepository.findById(departmentId);
         employee.setDepartment(dep);
         employeeRepository.save(employee);
@@ -87,12 +98,6 @@ public class HomeController {
 
         return "list";
     }
-//    @PostMapping("/search2")
-//    public String searchByDepartment(@ModelAttribute Department department, @RequestParam long departmentId, Model model){
-//        model.addAttribute("departments", departmentRepository.findAll());
-//        model.addAttribute("departments", departmentRepository.findById(departmentId));
-//        return "list";
-//    }
 }
 
 

@@ -68,7 +68,7 @@
             <div class="container">
                 <form action="#" th:action="@{/process}"
                       th:object="${employee}"
-                      method="post" class="form-horizontal">
+                      method="post" class="form-horizontal" enctype="multipart/form-data">
                     <div class="jumbotron">
                         <h1>Fill the form to add an employee.</h1>
                         <p>If you can't see your department in the list click the link below to add your department.</p>
@@ -94,6 +94,7 @@
                                 th:value="${department.id}">
                         </option>
                         </select>
+                       Profile picture: <input type="file" name="file" /><br/></br>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
                 </form>

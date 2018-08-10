@@ -27,6 +27,8 @@ public class Employee {
     @Size(min=4)
     private String phone;
 
+    private String headShot;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Department department;
 
@@ -77,5 +79,13 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public String getHeadShot() {
+        return headShot;
+    }
+
+    public void setHeadShot(String headShot) {
+        this.headShot = headShot;
     }
 }

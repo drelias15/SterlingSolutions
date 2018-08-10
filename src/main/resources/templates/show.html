@@ -10,7 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-        .row.content {height: 1000px}
+        .row.content {height: 800px}
 
         /* Set gray background color and 100% height */
         .sidenav {
@@ -32,6 +32,19 @@
                 padding: 15px;
             }
             .row.content {height: auto;}
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 40%;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .container {
+            padding: 2px 12px;
         }
     </style>
 </head>
@@ -66,22 +79,26 @@
         <div class="col-sm-9">
             <hr>
             <div class="jumbotron">
-                <h1>Employee Detail.</h1>
-                <p><a class="btn btn-primary btn-lg" href="/list" role="button">See All Employees. </a></p>
-                <p>
-                    First Name: <span th:text="${employee.firstName}"></span><br/> </p>
-                <p>Last Name:<span th:text="${employee.lastName}"></span><br/>
-                </p>
-                <p>Email:<span th:text="${employee.email}"></span><br/>
-                </p>
-                <p>Phone:<span th:text="${employee.phone}"></span><br/>
-                </p>
-                <p>Department:<span th:text="${employee.department.department}"></span><br/>
-                </p>
+                <h2>Employee Detail.</h2>
 
+                <div class="card">
+                    <img th:src="${employee.headShot}" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b><p>
+                            <span th:text="${employee.firstName}"></span>  <span th:text="${employee.lastName}"></span><br/>
+                        </p></b></h4>
+                        <p>Email:<span th:text="${employee.email}"></span><br/>
+                        </p>
+                        <p>Phone:<span th:text="${employee.phone}"></span><br/>
+                        </p>
+                        <p>Department:<span th:text="${employee.department.department}"></span><br/>
+                        </p>
+                    </div>
+                </div>
 
             </div>
             <a type="button" class="btn btn-danger" href="@{/delete/{id}(id=${employee.id})}" role="button"> Remove this Employee</a>
+            <a type="button" class="btn btn-primary" href="/list" role="button">See All Employees. </a>
         </div>
 
     </div>
